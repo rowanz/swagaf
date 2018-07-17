@@ -1,0 +1,407 @@
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<section class="container" id="Survey">
+
+    <div class="row" id="workContent">
+        <div class="col-sm-12">
+            <div class="panel panel-default panel-demo">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Instructions - please read even if you've done an earlier version of this HIT! &nbsp; &nbsp;<a data-toggle="collapse" href="#instructions"
+                                                                         style="color:#0080ff;font-weight:normal;text-decoration: underline;">(expand/collapse)</a>
+                    </h4>
+                </div>
+                <div id="instructions" class="panel-collapse collapse in" style="margin:10px">
+                    Imagine that you are watching a clip from a YouTube video. The clip has a caption, but it is missing
+                    the final phrase. Your task is to classify the endings as <span class="bg-warning" style="padding: 0px">likely</span>, <span class="bg-danger" style="padding: 0px">unlikely</span>, or <span class="bg-minusone" style="padding: 0px">gibberish</span>. Additionally, please select the <span class="bg-success" style="padding: 0px">best</span> and <span class="bg-plusone" style="padding: 0px">second best</span> endings for the caption.
+                    <b>More details:</b>
+                    <ul>
+                        <li>An ending is <span class="bg-warning" style="padding: 0px">likely</span> if it completes the caption in a reasonable and relevant way, given what you know about the world. Select the most <span class="bg-warning" style="padding: 0px">likely</span> ending as the <span class="bg-success" style="padding: 0px">best</span> ending.
+                        </li>
+                        <li>An ending is <span class="bg-danger" style="padding: 0px">unlikely</span> if it describes a
+                            situation that seems strange, ridiculous, or impossible.
+                        </li>
+                        <li>A phrase is <span class="bg-minusone" style="padding: 0px">gibberish</span> if it has such
+                            serious errors that it doesn't feel like a valid English sentence.
+                        </li>
+                        <li>Try to ignore minor grammar issues if possible. If the ending isn't written perfectly but
+                            it still describes a reasonable situation, please select <span class="bg-warning" style="padding: 0px">likely</span>. If the ending is mainly hard to understand because it describes a situation that sounds impossible or ridiculous, pick <span class="bg-danger" style="padding: 0px">unlikely</span>.
+                        </li>
+                    </ul>
+                    <i>Example 1:</i> Someone is shown sitting on a fence and talking to the camera while pointing out
+                    horses. Someone
+                    <div style="font-size:12px">
+                        <div class="clearfix">
+                            1) is shown riding a horse on a camel in the middle of the desert. <div class="btn active btn-disabled btn-danger btn-sm">Unlikely</div> <i>(Riding a
+                            horse on a camel is <span class="bg-danger" style="padding: 0px">unlikely</span>!)</i>
+                        </div>
+                        <div class="clearfix">
+                            2) speaks to the camera in the end while standing in front of a podium. <div class="btn active btn-disabled plusone btn-sm">Second Best</div><div class="btn active btn-disabled btn-warning btn-sm">Likely</div> <i>(OK, but the
+                            location abruptly changed to podium.)</i>
+                        </div>
+                        <div class="clearfix">
+                            3) demonstrates how to ride a horse with a hose quickly scrubbing his head. <div class="btn active btn-disabled btn-danger btn-sm">Unlikely</div> <i>(It's
+                            OK that the sentence lacks a comma. Riding a horse with a hose is <span class="bg-danger"
+                                                                                                    style="padding: 0px">unlikely</span>.)</i>
+                        </div>
+                        <div class="clearfix">
+                            4) is shown riding a horse while someone holds onto the horse and helps. <div class="btn active btn-disabled btn-success btn-sm">Best</div><div class="btn active btn-disabled btn-warning btn-sm">Likely</div>
+                        </div>
+                        <div class="clearfix">
+                            5) , the horse in a plaza field, with floating inflatable. <div class="btn active btn-disabled minusone btn-sm">Gibberish</div> <i>(It's impossible to understand
+                            what this sentence is trying to convey, so pick <span class="bg-minusone"
+                                                                                  style="padding: 0px">gibberish</span>.)</i>
+                        </div>
+                    </div>
+                    <p style="padding-top:12px"><i>Example 2:</i> Two small children as seen sitting at a table laughing
+                        with one another. One girl</p>
+                    <div style="font-size:12px">
+                        <div class="clearfix">
+                            1) slides onto her stomach in the end to get to it. <div class="btn active btn-disabled btn-danger btn-sm">Unlikely</div> <i>(This sentence is understandable enough
+                            to describe a physical situation, but it's still <span class="bg-danger"
+                                                                                   style="padding: 0px">unlikely</span>.)</i>
+                        </div>
+                        <div class="clearfix">
+                            2) is seen painting another's nails while she looks off into the distance. <div class="btn active btn-disabled btn-success btn-sm">Best</div><div class="btn active btn-disabled btn-warning btn-sm">Likely</div>
+                        </div>
+                        <div class="clearfix">
+                            3) finishes their song and begins dancing with a young girl. <div class="btn active btn-disabled btn-danger btn-sm">Unlikely</div> <i>(The two girls are
+                            laughing, not singing, so this is <span class="bg-danger"
+                                                                    style="padding: 0px">unlikely</span>.)</i>
+                        </div>
+                        <div class="clearfix">
+                            4) speaks to them and shows off more snow in her lap. <div class="btn active btn-disabled btn-danger btn-sm">Unlikely</div> <i>(It's <span class="bg-danger" style="padding: 0px">unlikely</span> that the girl is sitting at a table with snow in her lap.)</i>
+                        </div>
+                        <div class="clearfix">
+                            5) pours out a liquid into a bucket of water. <div class="btn active btn-disabled plusone btn-sm">Second Best</div><div class="btn active btn-disabled btn-warning btn-sm">Likely</div> <i>(This is a <span
+                                class="bg-warning" style="padding: 0px">likely</span> situation, but it's not as
+                            relevant as the best answer.)</i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--start here-->
+            <div class="panel panel-default">
+                <div class="panel-body"><p><i>Caption: &nbsp; &nbsp;</i><label>${0-startphrase}</label></p>
+                    <div class="questionbox">
+                        <div class="row">
+                            <div class="hypothesis col-sm-8">1) ${0-completion-0}</div>
+                            <div class="col-sm-4 buttonz">
+                                <div class="btn-group inline pull-right" data-toggle="buttons"><p><label
+                                        class="btn btn-warning btn-sm"><input type="radio" required="" name="q0-0"
+                                                                              value="pos"> Likely</label><label
+                                        class="btn btn-danger btn-sm"><input type="radio" required="" name="q0-0"
+                                                                             value="unl"> Unlikely</label><label
+                                        class="btn minusone btn-sm"><input type="radio" required="" name="q0-0"
+                                                                           value="gib"> Gibberish</label></p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questionbox">
+                        <div class="row">
+                            <div class="hypothesis col-sm-8">2) ${0-completion-1}</div>
+                            <div class="col-sm-4 buttonz">
+                                <div class="btn-group inline pull-right" data-toggle="buttons"><p><label
+                                        class="btn btn-warning btn-sm"><input type="radio" required="" name="q0-1"
+                                                                              value="pos"> Likely</label><label
+                                        class="btn btn-danger btn-sm"><input type="radio" required="" name="q0-1"
+                                                                             value="unl"> Unlikely</label><label
+                                        class="btn minusone btn-sm"><input type="radio" required="" name="q0-1"
+                                                                           value="gib"> Gibberish</label></p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questionbox">
+                        <div class="row">
+                           <div class="hypothesis col-sm-8">3) ${0-completion-2}</div>
+                            <div class="col-sm-4 buttonz">
+                                <div class="btn-group inline pull-right" data-toggle="buttons"><p><label
+                                        class="btn btn-warning btn-sm"><input type="radio" required="" name="q0-2"
+                                                                              value="pos"> Likely</label><label
+                                        class="btn btn-danger btn-sm"><input type="radio" required="" name="q0-2"
+                                                                             value="unl"> Unlikely</label><label
+                                        class="btn minusone btn-sm"><input type="radio" required="" name="q0-2"
+                                                                           value="gib"> Gibberish</label></p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questionbox">
+                        <div class="row">
+                            <div class="hypothesis col-sm-8">4) ${0-completion-3}</div>
+                            <div class="col-sm-4 buttonz">
+                                <div class="btn-group inline pull-right" data-toggle="buttons"><p><label
+                                        class="btn btn-warning btn-sm"><input type="radio" required="" name="q0-3"
+                                                                              value="pos"> Likely</label><label
+                                        class="btn btn-danger btn-sm"><input type="radio" required="" name="q0-3"
+                                                                             value="unl"> Unlikely</label><label
+                                        class="btn minusone btn-sm"><input type="radio" required="" name="q0-3"
+                                                                           value="gib"> Gibberish</label></p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questionbox">
+                        <div class="row">
+                            <div class="hypothesis col-sm-8">5) ${0-completion-4}</div>
+                            <div class="col-sm-4 buttonz">
+                                <div class="btn-group inline pull-right" data-toggle="buttons"><p><label
+                                        class="btn btn-warning btn-sm"><input type="radio" required="" name="q0-4"
+                                                                              value="pos"> Likely</label><label
+                                        class="btn btn-danger btn-sm"><input type="radio" required="" name="q0-4"
+                                                                             value="unl"> Unlikely</label><label
+                                        class="btn minusone btn-sm"><input type="radio" required="" name="q0-4"
+                                                                           value="gib"> Gibberish</label></p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questionbox">
+                        <div class="row">
+                            <div class="hypothesis col-sm-8">6) ${0-completion-5}</div>
+                            <div class="col-sm-4 buttonz">
+                                <div class="btn-group inline pull-right" data-toggle="buttons"><p><label
+                                        class="btn btn-warning btn-sm"><input type="radio" required="" name="q0-5"
+                                                                              value="pos"> Likely</label><label
+                                        class="btn btn-danger btn-sm"><input type="radio" required="" name="q0-5"
+                                                                             value="unl"> Unlikely</label><label
+                                        class="btn minusone btn-sm"><input type="radio" required="" name="q0-5"
+                                                                           value="gib"> Gibberish</label></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body"><p>Select the ending that <b>best</b> completes the caption.</p>
+                    <div class="questionbox">
+                        <div class="row buttonz2">
+                            <div class="btn-group inline" data-toggle="buttons"><p>
+                                <label class="btn btn-success btn-sm"><input type="radio" required="" name="best0"
+                                                                              value="0"> Ending 1</label><label
+                                        class="btn btn-success btn-sm"><input type="radio" required="" name="best0"
+                                                                             value="1"> Ending 2</label><label
+                                        class="btn btn-success btn-sm"><input type="radio" required="" name="best0"
+                                                                           value="2"> Ending 3</label><label
+                                        class="btn btn-success btn-sm"><input type="radio" required="" name="best0"
+                                                                           value="3"> Ending 4</label><label
+                                        class="btn btn-success btn-sm"><input type="radio" required="" name="best0"
+                                                                           value="4"> Ending 5</label><label
+                                        class="btn btn-success btn-sm"><input type="radio" required="" name="best0"
+                                                                           value="5"> Ending 6</label>
+                            </p></div></div></div></div>
+                <div class="panel-body"><p>Last, select <b>a different ending</b> ending as the <b>second best</b> completion.</p>
+                    <div class="questionbox">
+                        <div class="row buttonz2">
+                            <div class="btn-group inline" data-toggle="buttons"><p>
+                                <label class="btn plusone btn-sm"><input type="radio" required="" name="best1"
+                                                                              value="0"> Ending 1</label><label
+                                        class="btn plusone btn-sm"><input type="radio" required="" name="best1"
+                                                                             value="1"> Ending 2</label><label
+                                        class="btn plusone btn-sm"><input type="radio" required="" name="best1"
+                                                                           value="2"> Ending 3</label><label
+                                        class="btn plusone btn-sm"><input type="radio" required="" name="best1"
+                                                                           value="3"> Ending 4</label><label
+                                        class="btn plusone btn-sm"><input type="radio" required="" name="best1"
+                                                                           value="4"> Ending 5</label><label
+                                        class="btn plusone btn-sm"><input type="radio" required="" name="best1"
+                                                                           value="5"> Ending 6</label>
+                            </p></div></div></div></div>
+
+            </div>
+
+
+            <!--end here-->
+            <div class="well">
+                <h5 class="panel-title">Optional feedback? &nbsp; &nbsp;<a data-toggle="collapse" href="#feedback"
+                                                                           style="color:#0080ff;font-weight:normal;text-decoration: underline;">(expand/collapse)</a>
+                </h5>
+                <div id="feedback" class="panel-collapse collapse" style="margin:5px">
+                    <p> Thanks for filling out the questions above! If something about the hit was
+                        unclear, please comment below. We would like to make this HIT easier for future workers, so we
+                        really appreciate feedback though it is optional. </p>
+                    <textarea class="form-control" rows="2" name="commentbox"></textarea>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+
+    .btn {
+        text-align: left;
+    }
+
+    #collapseTrigger {
+        color: #fff;
+        display: block;
+        text-decoration: none;
+    }
+
+    #submitButton {
+        white-space: normal;
+    }
+
+    .hypothesis {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .questionbox {
+        border-bottom: 1px;
+        border-bottom-color: gray;
+        border-bottom-style: solid;
+        margin-left: -10px;
+        margin-right: -15px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .table {
+        margin-bottom: 5px;
+    }
+
+    .table > thead > tr > th {
+        padding-bottom: 1px;
+        border-bottom-width: 0px;
+    }
+
+    .btn-group-sm > .btn, .btn-sm {
+        padding: 5px;
+    }
+
+    .buttonz {
+        padding-left: 0px;
+        padding-right: 15px;
+    }
+    .buttonz2 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .panel-demo {
+        background-color: #f9f9f9;
+    }
+
+    .panel-demo > .panel-heading {
+        background-color: #e9e9e9;
+    }
+
+    .panel {
+        margin-bottom: 5px;
+    }
+
+    .panel-body {
+        padding-bottom: 0px;
+        padding-top: 5px;
+    }
+
+    .btn-group {
+        padding: 1px;
+    }
+
+    .clearfix {
+        border-bottom: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: gray;
+    }
+
+    p {
+        margin: 0 0 0px;
+    }
+
+    .well {
+        padding: 5px;
+        margin-bottom: 15px;
+        font-size: 12px;
+    }
+
+    @media (max-width: 767px) {
+        .wrapper {
+            width: 100%;
+            min-width: 500px;
+        }
+    }
+
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 1000px; /* or 950px */
+    }
+
+    .bg-minusone {
+        background-color: #956f594d;
+    }
+
+    .minusone {
+        white-space: normal;
+        color: #ffffff;
+        background-color: #956f59;
+        border-color: #956f59;
+    }
+
+    .minusone:hover,
+    .minusone:focus,
+    .minusone:active,
+    .minusone.active {
+        color: #ffffff;
+        background-color: #85634f;
+        border-color: #755746;
+    }
+
+    .minusone.disabled:hover,
+    .minusone.disabled:focus,
+    .minusone.disabled:active,
+    .minusone.disabled.active,
+    .minusone[disabled]:hover,
+    .minusone[disabled]:focus,
+    .minusone[disabled]:active,
+    .minusone[disabled].active,
+    fieldset[disabled] .minusone:hover,
+    fieldset[disabled] .minusone:focus,
+    fieldset[disabled] .minusone:active,
+    fieldset[disabled] .minusone.active {
+        background-color: #956f59;
+        border-color: #956f59;
+    }
+
+    .bg-plusone {
+        background-color: #e1f0de;
+    }
+    .plusone {
+      white-space: normal;
+      color: #ffffff;
+      background-color: #72b01d;
+      border-color: #72b01d;
+    }
+    .plusone:hover,
+    .plusone:focus,
+    .plusone:active,
+    .plusone.active {
+      color: #ffffff;
+      background-color: #649a19;
+      border-color: #568416;
+    }
+    .plusone.disabled:hover,
+    .plusone.disabled:focus,
+    .plusone.disabled:active,
+    .plusone.disabled.active,
+    .plusone[disabled]:hover,
+    .plusone[disabled]:focus,
+    .plusone[disabled]:active,
+    .plusone[disabled].active,
+    fieldset[disabled] .plusone:hover,
+    fieldset[disabled] .plusone:focus,
+    fieldset[disabled] .plusone:active,
+    fieldset[disabled] .plusone.active {
+      background-color: #72b01d;
+      border-color: #72b01d;
+    }
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
