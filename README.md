@@ -1,8 +1,8 @@
-# commonsense
-SWAG dataset. warning: here there be dragons. I listed my specs if that helps. The most important thing probably is that I'm using python 3.6, and pytorch 3.1
+# swagaf
+SWAG dataset. Currently, this belongs to a paper that is in submission to EMNLP 2018.
 
 ## Setting this up
-you'll need to install a bunch of things. The following commands will set up the version of allennlp that I used.
+you'll need to install a bunch of things. I listed my specs if that helps in `requirements.txt`. The most important thing probably is that I'm using python 3.6, and pytorch 3.1. The following commands will set up the version of allennlp that I used.
 
 ``` 
 git clone https://github.com/allenai/allennlp.git
@@ -17,3 +17,6 @@ Also, for everything in this repo, you'll want to ```export PYTHONPATH=/home/row
 
 
 
+## Common use cases
+
+The data is all in `data/`, baseline and instructions are in `swag_baselines`. Most people will not need to look at `create_swag` or `raw_data` but it's there if you need it!
