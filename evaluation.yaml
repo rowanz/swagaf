@@ -1,0 +1,20 @@
+description: ESIM validation predictions for SWAG
+tasks:
+  - spec:
+      blueprint: rowanz/swag-baseline-image
+      resultPath: /results
+      args:
+        - python
+        - -m
+        - swag_baselines.esim.predict
+        - swag_baselines/esim/tmp/glove/model.tar.gz
+        - /datasets/val.csv
+        - --include-package
+        - swag_baselines.esim
+        - --output-file
+        - /results/val_predictions.csv
+        - --cuda-device
+        - -1
+      datasetMounts:
+        - datasetId: swag-val
+          containerPath: /datasets/val.csv
