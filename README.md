@@ -1,5 +1,14 @@
 # swagaf
-SWAG dataset. Currently, this belongs to a paper that is in submission to EMNLP 2018.
+SWAG dataset. More info is at [rowanzellers.com/swag]. Here's the bibtex again:
+
+```
+@inproceedings{zellers2018swagaf,
+    title={SWAG: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference},
+    author={Zellers, Rowan and Bisk, Yonatan and Schwartz, Roy and Choi, Yejin},
+    booktitle = "Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    year={2018}
+}
+```
 
 ## Setting this up
 you'll need to install a bunch of things. I listed my specs if that helps in `requirements.txt`. The most important thing probably is that I'm using python 3.6, and pytorch 3.1. The following commands will set up the version of allennlp that I used.
@@ -12,10 +21,7 @@ INSTALL_TEST_REQUIREMENTS="true" ./scripts/install_requirements.sh
 python setup.py install
 ```
 
-
 Also, for everything in this repo, you'll want to ```export PYTHONPATH=/home/rowan/code/swagaf```
-
-
 
 ## Common use cases
 
