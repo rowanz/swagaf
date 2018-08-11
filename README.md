@@ -1,5 +1,5 @@
 # swagaf
-SWAG dataset. More info is at [rowanzellers.com/swag]. Here's the bibtex again:
+SWAG dataset. More info is at [rowanzellers.com/swag](rowanzellers.com/swag). Here's the bibtex again:
 
 ```
 @inproceedings{zellers2018swagaf,
