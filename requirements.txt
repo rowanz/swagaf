@@ -1,1 +1,3 @@
 pandas==0.20.3
+torch==0.3.1
+git+git://github.com/allenai/allennlp.git@7142962d330ca5a95cade114c26a361c78f2042e

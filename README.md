@@ -2,7 +2,7 @@
 SWAG dataset. More info is at [rowanzellers.com/swag](https://rowanzellers.com/swag).
 
 ## Setting up your environment
-To create an environment you will need to intall Python 3.6, PyTorch 3.1, and AllenNLP.  Additional
+To create an environment you will need to intall Python 3.1, PyTorch 3.1, and AllenNLP.  These
 requirements are listed in `requirements.txt`.
 
 You will also need to set PYTHONPATH to the `swagaf` directory.  You can do this by running the

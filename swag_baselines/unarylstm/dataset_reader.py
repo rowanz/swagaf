@@ -1,4 +1,4 @@
-# Exactly the same as the other dataset reader
+# slightly different from the other dataset reader
 
 from typing import Dict, List
 import json
@@ -18,7 +18,6 @@ import numpy as np
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
-USE_S1 = True
 
 
 @DatasetReader.register("swag")
@@ -40,29 +39,31 @@ class SwagReader(DatasetReader):
     def __init__(self,
                  tokenizer: Tokenizer = None,
                  token_indexers: Dict[str, TokenIndexer] = None,
-                 use_only_gold_examples: bool = False) -> None:
+                 use_only_gold_examples: bool = False,
+                 only_end: bool = False) -> None:
         super().__init__(lazy=False)
         self._tokenizer = tokenizer or WordTokenizer()
         self._token_indexers = token_indexers or {'tokens': SingleIdTokenIndexer()}
         self.use_only_gold_examples = use_only_gold_examples
+        self.only_end = only_end
 
     @overrides
     def _read(self, file_path: str):
-        if not USE_S1:
-            logger.warning("We're splitting the sentences up here!!!! WATCH OUT\n\n\n")
+
         swag = pd.read_csv(file_path)
 
         if self.use_only_gold_examples and file_path.endswith('train.csv'):
             swag = swag[swag['gold-source'].str.startswith('gold')]
 
         for _, row in swag.iterrows():
-            if USE_S1:
-                premise = row['sent1']
-                endings = [row['ending{}'.format(i)] for i in range(4)]
-                hypos = ['{} {}'.format(row['sent2'], end) for end in endings]
+            premise = row['sent1']
+            endings = [row['ending{}'.format(i)] for i in range(4)]
+
+            if self.only_end:
+                # NOTE: we're JUST USING THE ENDING HERE, so hope that's what you intend
+                hypos = endings
             else:
-                premise = row['sent2']
-                hypos = [row['ending{}'.format(i)] for i in range(4)]
+                hypos = ['{} {} {}'.format(row['sent1'], row['sent2'], end) for end in endings]
 
             yield self.text_to_instance(premise, hypos, label=row['label'] if hasattr(row, 'label') else None)
 
@@ -73,8 +74,8 @@ class SwagReader(DatasetReader):
                          label: int = None) -> Instance:
         # pylint: disable=arguments-differ
         fields: Dict[str, Field] = {}
-        premise_tokens = self._tokenizer.tokenize(premise)
-        fields['premise'] = TextField(premise_tokens, self._token_indexers)
+        # premise_tokens = self._tokenizer.tokenize(premise)
+        # fields['premise'] = TextField(premise_tokens, self._token_indexers)
 
         # This could be another way to get randomness
         for i, hyp in enumerate(hypotheses):
@@ -90,7 +91,9 @@ class SwagReader(DatasetReader):
         tokenizer = Tokenizer.from_params(params.pop('tokenizer', {}))
         token_indexers = TokenIndexer.dict_from_params(params.pop('token_indexers', {}))
         use_only_gold_examples = params.pop('use_only_gold_examples', False)
+        only_end = params.pop('only_end', False)
         params.assert_empty(cls.__name__)
         return cls(tokenizer=tokenizer,
                    token_indexers=token_indexers,
-                   use_only_gold_examples=use_only_gold_examples)
+                   use_only_gold_examples=use_only_gold_examples,
+                   only_end=only_end)
