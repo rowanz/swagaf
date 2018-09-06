@@ -22,7 +22,7 @@ ADD csv_predict.py .
 
 ENV PYTHONPATH .
 
-RUN pip install .
+RUN python setup.py install
 
 # define the default command
 # if you need to run a long-lived process, use 'docker run --init'
