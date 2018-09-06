@@ -101,6 +101,6 @@ if __name__ == '__main__':
     label_probs = np.concatenate(label_probs)
     my_preds = pd.DataFrame(label_probs, columns=['ending0','ending1','ending2','ending3'])
     my_preds['pred'] = label_probs.argmax(1)
-    my_preds.to_csv(args.output_file, columns=["pred"])
+    my_preds.to_csv(args.output_file, columns=["pred"], index=False)
 
 
