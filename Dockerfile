@@ -19,7 +19,8 @@ ADD Dockerfile .
 ADD README.md  .
 ADD csv_predict.py .
 
+ENV PYTHONPATH .
 
 # define the default command
 # if you need to run a long-lived process, use 'docker run --init'
-CMD ["python csv_predict.py --include-package swag_baselines.decomposable_attention  models/model.tar.gz swag.csv --output-file results/predictions.csv"]
+CMD ["/bin/bash"]
