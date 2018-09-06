@@ -1,37 +1,29 @@
-FROM python:3.6.3-jessie
-
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
-
-ENV PATH /usr/local/nvidia/bin/:$PATH
-ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
-
-# Tell nvidia-docker the driver spec that we need as well as to
-# use all available devices, which are mounted at /usr/local/nvidia.
-# The LABEL supports an older version of nvidia-docker, the env
-# variables a newer one.
-ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
-LABEL com.nvidia.volumes.needed="nvidia_driver"
-
-RUN pip install "git+git://github.com/allenai/allennlp.git@7142962d330ca5a95cade114c26a361c78f2042e"
-
-# download spacy models
-RUN python -m spacy download en_core_web_sm
+FROM library/python:3.6
 
 # set the working directory
-WORKDIR /swagaf
+WORKDIR /
 
 # install python packages
 ADD ./requirements.txt .
-RUN pip install -r ./requirements.txt
+RUN pip3.6 install --upgrade pip  && pip3.6 install -r requirements.txt
 
-# add the code as the final step so that when we modify the code
-# we don't bust the cached layers holding the dependencies and
-# system packages.
-ADD . .
+# Create the results directory we will place our predictions
+#   ./swag.csv is the default file location leaderboard will put the dataset
+#   ./results/predictions.csv is the default file location leaderboard will look for results
+RUN mkdir /results
 
-ENV PYTHONPATH /swagaf
+# add files in addition to requirements.txt
+ADD configs/ .
+ADD models/ .
+ADD swag_baselines/ .
+ADD Dockerfile .
+ADD setup.py .
+ADD readme.md .
+ADD csv_predict.py .
 
-ENTRYPOINT []
-CMD [ "/bin/bash" ]
+# pip install the swagexample package
+RUN pip3.6 install .
+
+# define the default command
+# if you need to run a long-lived process, use 'docker run --init'
+CMD ["python csv_predict.py --include-package swag_baselines.decomposable_attention  models/model.tar.gz swag.csv --output-file results/predictions.csv"]
