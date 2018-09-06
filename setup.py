@@ -25,9 +25,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'allennlp',
-        'ipython',
-        'torch',
-        'torchvision'
+        'torch'
     ],
     python_requires='>=3.6',
     zip_safe=False
