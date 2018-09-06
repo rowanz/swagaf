@@ -13,16 +13,12 @@ RUN pip3.6 install --upgrade pip  && pip3.6 install -r requirements.txt
 RUN mkdir /results
 
 # add files in addition to requirements.txt
-ADD configs/ .
 ADD models/ .
 ADD swag_baselines/ .
 ADD Dockerfile .
-ADD setup.py .
-ADD readme.md .
+ADD README.md  .
 ADD csv_predict.py .
 
-# pip install the swagexample package
-RUN pip3.6 install .
 
 # define the default command
 # if you need to run a long-lived process, use 'docker run --init'
