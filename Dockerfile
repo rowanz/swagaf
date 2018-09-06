@@ -13,16 +13,12 @@ RUN pip3.6 install --upgrade pip  && pip3.6 install -r requirements.txt
 RUN mkdir /results
 
 # add files in addition to requirements.txt
-ADD models/ .
-ADD swag_baselines/ .
+ADD models .
+ADD swag_baselines .
 ADD Dockerfile .
 ADD README.md  .
 ADD setup.py .
 ADD csv_predict.py .
-
-ENV PYTHONPATH .
-
-RUN python setup.py install
 
 # define the default command
 # if you need to run a long-lived process, use 'docker run --init'
