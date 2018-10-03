@@ -4,5 +4,6 @@ Currently there are 4 baselines here: [FastText](https://fasttext.cc), [Decompos
 
 # Checkpoints
 
-* [ESIM+ELMo, trained on Found+Gen data](https://drive.google.com/file/d/1gWsWtn8qgmaSZ6a6NoSCWYDnx2zCAYKA/view?usp=sharing)
+* [LSTM+ELMo, trained on Found+Gen data](https://drive.google.com/file/d/1gWsWtn8qgmaSZ6a6NoSCWYDnx2zCAYKA/view?usp=sharing)
+* [ESIM+ELMo, trained on Found data](https://drive.google.com/file/d/1lFgD2CujAAWiyY1RwZDLI7w0_LIjQrQ9/view?usp=sharing)
 * Let me know if you have any requests :)
