@@ -35,7 +35,7 @@ model = SimpleBiLM(
 )
 
 model.cuda()
-optimistic_restore(model, torch.load('pretrain/e1-tbooks-pretrained-ckpt-370000.tar')['state_dict'])
+optimistic_restore(model, torch.load('e1-tbooks-pretrained-ckpt-370000.tar')['state_dict'])
 optimizer = optim.Adam([p for p in model.parameters() if p.requires_grad], weight_decay=1e-6, lr=1e-3)
 # scheduler = ReduceLROnPlateau(optimizer, 'min', patience=3, factor=0.1,
 #                               verbose=True, threshold=0.0001, threshold_mode='abs', cooldown=1)

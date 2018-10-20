@@ -6,17 +6,9 @@ Contains hopefully everything you need to run the LM
 
 0. Update the config file with where your pretraining text is.
 
-0. Create the vocabulary by running ```python load_data.py``` or copy things around manually. These commands will help you copy stuff to a different server
-    ```
-    scp -r lm-0-of-5.pkl lm-1-of-5.pkl lm-2-of-5.pkl lm-3-of-5.pkl lm-4-of-5.pkl vocabulary  rowan@magellanic:~/code/swagaf/create_swag/lm/
-    ```
+1. Create the vocabulary by running ```python load_data.py``` or copy things around manually, then do the pretraining using `pretrain_lm.py`. Or, you can access my pretrained checkpoint [here](https://drive.google.com/file/d/1Ik7cbGs-wbAKKCeuYA8Uhe5O3pHJwHcj/view?usp=sharing)
     
-    and in pretrain
-    ```
-    scp e1-tbooks-pretrained-ckpt-370000.tar rowan@magellanic:~/code/swagaf/create_swag/lm
-    ```
-    
-1. RUN
+2. To finetune on activitynet captions and LSMDC do
     
     ```
     export PYTHONPATH=/home/rowan/code/swagaf
@@ -36,4 +28,6 @@ Contains hopefully everything you need to run the LM
     nohup python train_lm.py -fold 4 > fold_4_log.txt &
     ```
 
-2. Pick the best checkpoints, then go generate stuff!!
+One of my checkpoints (for fold 0) is [here](https://drive.google.com/file/d/1J9QPJTIOIDR4V_zGB8ejilWAXXkxrogC/view?usp=sharing)
+
+3. Pick the best checkpoints, then go generate stuff!!
