@@ -1,4 +1,7 @@
 # swagaf
+
+### Like this work, or commonsense reasoning in general? You might be interested in checking out my brand new dataset VCR: Visual Commonsense Reasoning, at [visualcommonsense.com](https://visualcommonsense.com)!
+
 SWAG dataset. More info is at [rowanzellers.com/swag](https://rowanzellers.com/swag).
 
 ## Setting up your environment
