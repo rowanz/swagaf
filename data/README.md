@@ -8,7 +8,7 @@ In `train_full.csv` or `val_full.csv`: we have both the texts of the endings/con
 
 ## regular (shuffled)
 
-This could be more interesting for modeling, and it's the way the test data is formatted. For each `startphrase` (also, split into `sent1`,`sent2`) we have 4 endings, and a label which says the correct one. You can use `test.csv` for submission on the leaderboard here: [https://leaderboard.dev.allenai.org/swag/submission/create](https://leaderboard.dev.allenai.org/swag/submission/create). The fields are exactly the same as `val.csv` and `train.csv` except for the label.
+This could be more interesting for modeling, and it's the way the test data is formatted. For each `startphrase` (also, split into `sent1`,`sent2`) we have 4 endings, and a label which says the correct one. You can use `test.csv` for submission on the leaderboard here: [https://leaderboard.allenai.org/swag/submission/create](https://leaderboard.allenai.org/swag/submission/create). The fields are exactly the same as `val.csv` and `train.csv` except for the label.
 
 
 
